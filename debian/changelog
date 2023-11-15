@@ -1,3 +1,155 @@
+adwaita-icon-theme (45.0-2) unstable; urgency=medium
+
+  * Team upload
+  * Stop generating d/control from d/control.in
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 08 Nov 2023 20:46:12 +0000
+
+adwaita-icon-theme (45.0-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Amin Bandali ]
+  * Change packaging branch to debian/latest
+
+  [ Simon McVittie ]
+  * d/watch: Watch for beta releases and release candidates
+  * New upstream release
+    - d/v45.txt: Add a reference list of icons provided by v45.
+      This reinstates a few legacy icons that were removed from v44.
+    - d/control.in: Build-depend on Meson
+    - d/copyright.pl: Update
+    - d/autoreconf: Only autoreconf the 41/ subdirectory
+  * d/rules: Don't install duplicate license files.
+    On Debian systems, this information is in /usr/share/doc/*/copyright
+    or /usr/share/common-licenses.
+  * d/rules: Make sure not to install icon cache file
+  * Release to unstable (Closes: #1050505)
+    - As noted in version 44.0-1, this version does not provide all of the
+      icons that earlier versions did. Please report bugs if there are
+      high-impact examples, but some of these bugs are likely to be
+      reassigned to the application that needs the icon, asking it to
+      ship its own icon as a GResource.
+      We can consider reinstating individual icons (most likely taken
+      from v41) if needed, but we should not reinstate older icons
+      indiscriminately, because that can itself cause bugs such
+      as #1022221.
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 18 Sep 2023 16:07:13 +0100
+
+adwaita-icon-theme (44.0-1) experimental; urgency=medium
+
+  * Team upload
+
+  [ Jeremy Bícha ]
+  * New upstream release
+
+  [ Debian Janitor ]
+  * d/upstream/metadata: Add
+
+  [ Simon McVittie ]
+  * Add a script to list the icons that are installed.
+    This will help us to compare successive releases and find which icons
+    have been removed.
+  * d/v41.txt, d/v43.txt: Add lists of the icons that were installed by
+    v41 and v43
+  * d/v44.txt: Add a list of what is provided by v44
+  * Standards-Version: 4.6.2 (no changes required)
+  * d/adwaita-icon-theme.lintian-overrides: Mark empty
+    /usr/share/icons/default as intentional. At runtime it is not
+    actually empty, because the postinst creates an alternatives-managed
+    symlink there.
+  * d/rules: Drop legacy icons, previously copied from v41.
+    If we are going to follow upstream by dropping these, we should do so
+    early enough in the Debian 13 release cycle that applications have plenty
+    of time to adjust. We can consider bringing back individual icons if
+    needed.
+  * d/clean: Clean up temporary directories.
+    This fixes failure to rebuild the source package from the same directory
+    after building binaries. (Closes: #1043709)
+
+ -- Simon McVittie <smcv@debian.org>  Tue, 15 Aug 2023 16:23:06 +0100
+
+adwaita-icon-theme (43-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 20 Sep 2022 12:17:15 -0400
+
+adwaita-icon-theme (43~beta.1-2) unstable; urgency=medium
+
+  * Team upload
+  * d/adwaita-icon-theme.links: Drop obsolete workaround.
+    Version 43.beta contains these symbolic links, so we don't need to
+    create them ourselves.
+  * d/rules: Make it easier to compare v41 with current version
+  * d/rules: Don't install large versions of legacy icons from version 41.
+    This saves about 5M. If applications are relying on these legacy icons,
+    then a smaller version will be used, scaled up if necessary. This is
+    likely to be blurry, but that can act as a hint that apps are expected
+    to ship their own icons instead of relying on icons with specific names
+    existing in the theme, and is more backwards-compatible than the
+    upstream behaviour where these icons just don't exist any more.
+  * d/rules: Remove several smaller sizes of legacy icons from version 41.
+    This saves about 3.6M. Small legacy icons will display using the
+    24x24 or 48x48 set; as with the larger sizes, this might be blurry, but
+    that can act as a hint that these icons are the wrong thing to use.
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 22 Aug 2022 22:28:58 +0100
+
+adwaita-icon-theme (43~beta.1-1) unstable; urgency=medium
+
+  * Team upload
+  * Standards-Version: 4.6.1 (no changes required)
+  * d/watch: Look for development versions
+  * New upstream release
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 17 Aug 2022 10:52:04 +0100
+
+adwaita-icon-theme (42.0-2) unstable; urgency=medium
+
+  * Team upload
+  * Upload to unstable
+  * d/icon-viewer.py: Add a tool to preview the legacy icons.
+    This might be useful in future, to assess which sizes we can
+    safely drop to reduce the size of the package.
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 13 Apr 2022 12:24:32 +0100
+
+adwaita-icon-theme (42.0-1) experimental; urgency=medium
+
+  * Team upload
+  * New upstream release
+  * Version 42 removed many "legacy" icons that are still in use by various
+    packages (#1005997, #1006029). Resolve this by bundling a copy of
+    version 41.0 and taking a subset of icons from there.
+    See debian/legacy-icons-41.txt and debian/removed-icons-41.txt for
+    lists of the affected icons, which are likely to be removed again
+    in a subsequent upload.
+    - d/copyright: Cover 41/ directory too
+    - d/watch, d/gbp.conf: Download version 41.0 as an extra source component
+    - d/rules: Install a subset of icons from version 41.0
+  * d/adwaita-icon-theme.links: Create RTL symlinks for seek, skip icons.
+    See upstream issue GNOME/adwaita-icon-theme#182
+  * d/control.in: adwaita-icon-theme Provides a-i-t-full.
+    Ubuntu splits up the package, Debian does not.
+  * d/.gitignore: Add
+
+ -- Simon McVittie <smcv@debian.org>  Sat, 02 Apr 2022 14:11:46 +0100
+
+adwaita-icon-theme (42~really41.0-1) unstable; urgency=medium
+
+  * Revert to the 41.0 release since the 42 Beta release removed far
+    too many icons (Closes: #1005997, #1006029)
+
+ -- Jeremy Bicha <jeremy.bicha@canonical.com>  Tue, 08 Mar 2022 16:05:15 -0500
+
+adwaita-icon-theme (42~beta-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jeremy.bicha@canonical.com>  Wed, 16 Feb 2022 08:12:21 -0500
+
 adwaita-icon-theme (41.0-1) unstable; urgency=medium
 
   * New upstream release

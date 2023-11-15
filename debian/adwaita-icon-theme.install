@@ -1,1 +1,3 @@
+usr/share/icons/Adwaita
+usr/share/pkgconfig/adwaita-icon-theme.pc
 debian/cursor.theme usr/share/icons/Adwaita
