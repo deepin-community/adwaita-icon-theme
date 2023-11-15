@@ -1,3 +1,50 @@
+45.0
+45.rc
+- cursors: new hand cursors, updated spinner
+
+45.beta
+- new meson build system thanks to Dan Yeaw
+- fullcolor: new audio mimetype
+- symbolic: notifications in outline style
+- symbolic: go home, user-home, notifications in outline style
+- symbolic: new weather icons
+- cursors: tooling in python 3
+
+44.0
+44.beta
+- fullcolor: use scalables instead of large bitmaps, using the app icon toolchain. #205
+- fullcolor: low res only at 16x16, lean onto the scalables for everything else
+- symbolic: updated rounded style
+43
+43.beta.1
+ - build: fix dist tarball creation (symlink issue) #206
+43.beta
+ - symbolic: selection-mode tweaks
+ - symbolic: folder icons
+ - symbolic: package icons
+ - symbolic: starred updates
+ - symbolic: restore #197
+ - fullcolor: drag accept gradient fixes #195
+ - symbolic: auth-face for face unlock
+ - symbolic: modem updates
+ - inkscape 1.2 compatibility
+ - fix build
+ - symbolic: update style to the contemporary rounded outlines #187
+ - symbolic: bluetooth off #102
+ - fullcolor: fix trash transparency #185
+ - symbolic: revert RTL changes for media seek
+42.0
+ - symbolic: provide -rtl versions properly
+ - README: bring up to date
+ - fullcolor: fix input-mouse
+42.beta
+ - symbolic: port over to core.svg for new toolchain (Symbolic Preview)
+ - symbolic: updated style across the board - simpler, rounder, 
+   consistently 2px thick outlines.
+- fullcolor: prune legacy fullcolor lowres, apps like Evolution ship
+   their assets from now on
+ - fullcolor: updated device icons
+ - fullcolor: updated folder icons
 41.0
  - fullcolor network server and workgroup: #121
  - symbolic: larger symbolics for headerbar

@@ -1,0 +1,10 @@
+network-wired-offline
+application-certificate
+folder-drag-accept
+folder-open
+folder-saved-search
+media-floppy
+start-here
+x-office-address-book
+x-office-calendar
+x-office-drawing-template
