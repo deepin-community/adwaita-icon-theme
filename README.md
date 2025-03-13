@@ -1,8 +1,10 @@
 # Adwaita Icon Theme
+Private UI icon set for GNOME core apps.
+
 ![Adwaita Icons](src/logo.svg)
 
 ## Bugs and Requests
-If you're a core GNOME application maintainer and you have an icon need that bridges multiple components or apps, feel free to file a request in the [issue tracker](https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues). If you're an application developer, file a request against the [Icon Development Kit](https://gitlab.gnome.org/Teams/Design/icon-development-kit/-/issues) instead.
+If you're a core GNOME application maintainer (`Files` and `gnome-shell`, really) and you have an icon need that bridges multiple components or apps, feel free to file a request in the [issue tracker](https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues). If you're an application developer, file a request against the [Icon Development Kit](https://gitlab.gnome.org/Teams/Design/icon-development-kit/-/issues) instead.
 
 
 ## Fullcolor vs symbolic
@@ -11,7 +13,7 @@ For an up to date guide on how to use and how to design GNOME style icons, see t
 ## Building and Contributing to Adwaita
 The icon set for system components shares the same workflow as 3rd party app symbolics, the [icon devkit](https://gitlab.gnome.org/Teams/Design/icon-development-kit).
 
-While many legacy symbolics only live as the exported individual SVGS in `Adwaita/scalable/`, the replacements are maintained in `src/symbolic/core.svg`. Using icon categories/contexts are [no longer used](https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/73) and all new icons go into `actions`. Please refer to the [Devkit guidelines](https://gitlab.gnome.org/Teams/Design/icon-development-kit) on how to structure the metadata.
+While many legacy symbolics only live as the exported individual SVGS in `Adwaita/symbolic/`, the replacements are maintained in `src/symbolic/core.svg`. Using icon categories/contexts are [no longer used](https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/73) and all new icons go into `actions`. Please refer to the [Devkit guidelines](https://gitlab.gnome.org/Teams/Design/icon-development-kit) on how to structure the metadata.
 
 Do note that no new additions should be made unless very thoroughly discussed. *a-i-t* is the wrong way to reuse icon assets (no API, false promise of stability).
 
@@ -27,3 +29,15 @@ Gtk doesn't care about the colors you define for the icon. They are recolored at
 - `warning` - this maps to gtk `@warning_color`
 - `error` - maps to `@error_color`
 - `success` - maps to `@success_color`
+
+### Cursor generation
+
+Cursors are in the xcursorgen format. They come in multiple sizes and possibly animation frames per file. Generating them is a two sstep process. 
+
+First step is to render the source svg into multiple pngs. This is done with the `renderpngs.py` script. It takes the adwaita.svg file and generates the pngs for the different sizes and saves them in the `pngs/` directory.
+
+The cursors are then generated using the `cursorgen.py` script. The `cursors.py` file contains a dictionary that maps the cursor name to the *cursor info* files such as `pngs/default.in`. The *cursor info* is a dictionary that contains the hotspot, frames, and duration. If the cursor is animated, the duration is the milliseconds each frame takes.
+
+Coordinates of the hotspots are only specified for the nominal 24x24 size. The script scales the coordinates to the different sizes and generates the cursors for the different sizes.
+
+The `cursorgen.py` script generates the cursors for the different sizes and saves them in the `Adwaita/cursors/` directory.
