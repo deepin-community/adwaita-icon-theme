@@ -1,3 +1,10 @@
+adwaita-icon-theme (50.0-2deepin1) unstable; urgency=medium
+
+  * Lower debhelper compat to 13 for building with lower debhelper
+    version
+
+ -- lichenggang <lichenggang@uniontech.com>  Mon, 17 Aug 2026 17:10:50 +0800
+
 adwaita-icon-theme (50.0-2) unstable; urgency=medium
 
   * Update debhelper compat to 14

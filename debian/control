@@ -7,7 +7,7 @@ Uploaders:
  Marco Trevisan (Treviño) <marco@ubuntu.com>,
 Section: gnome
 Build-Depends:
- debhelper-compat (= 14),
+ debhelper-compat (= 13),
 Build-Depends-Indep:
  gettext,
  libgtk-3-bin,
