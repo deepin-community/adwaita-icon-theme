@@ -1,3 +1,9 @@
+adwaita-icon-theme (48.1-1deepin1) unstable; urgency=medium
+
+  * Restore legacy X11 cursor name aliases
+
+ -- lichenggang <lichenggang@uniontech.com>  Mon, 17 Aug 2026 17:38:31 +0800
+
 adwaita-icon-theme (48.1-1) unstable; urgency=medium
 
   * Team upload
