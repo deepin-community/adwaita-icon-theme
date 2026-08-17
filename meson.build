@@ -1,4 +1,4 @@
-project('adwaita-icon-theme', version : '48.1', meson_version : '>= 0.64.0')
+project('adwaita-icon-theme', version : '50.0', meson_version : '>= 0.64.0')
 
 pkg = import('pkgconfig')
 pkg.generate(
@@ -22,6 +22,23 @@ install_subdir(
   strip_directory : true,
   install_tag : 'runtime',
 )
+
+files('Adwaita/scalable/places/folder.svg')
+if host_machine.system() == 'windows'
+  install_data(
+    'Adwaita/scalable/places/folder.svg',
+    install_dir: adwaita_dir / 'scalable' / 'status',
+    rename: 'folder-open.svg',
+    install_tag : 'runtime',
+  )
+else
+  install_symlink(
+    'folder-open.svg',
+    install_dir: adwaita_dir / 'scalable' / 'status',
+    install_tag: 'runtime',
+    pointing_to: '../places/folder.svg',
+  )
+endif
 
 command_output = run_command('tools/find_cursors_win32.py', check: true)
 win32_cursors = command_output.stdout().strip().split('\n')
@@ -50,6 +67,7 @@ else
 
     'all-resize': ['fleur'],
     'crosshair': ['cross', 'cross_reverse', 'diamond_cross', 'tcross'],
+    'context-menu': ['dnd-ask'],
 
     # move and dnd-move are separate contexts
     # https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/286

@@ -1,9 +1,52 @@
+adwaita-icon-theme (50.0-2) unstable; urgency=medium
+
+  * Update debhelper compat to 14
+  * Update Standards Version to 4.7.4
+  * Remove obsolete Breaks/Replaces
+  * Run wrap-and-sort -ast
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 16 Jun 2026 11:00:14 -0400
+
+adwaita-icon-theme (50.0-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+  * d/watch*: Convert to v5 format
+
+ -- Simon McVittie <smcv@debian.org>  Thu, 19 Mar 2026 13:58:49 +0000
+
+adwaita-icon-theme (50~alpha-1) unstable; urgency=medium
+
+  [ Daniel van Vugt ]
+  * New upstream release 50.alpha
+
+  [ Jeremy Bícha ]
+  * Bump Standards Version to 4.7.3
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 10 Feb 2026 08:57:05 -0500
+
+adwaita-icon-theme (49.0-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Fri, 12 Sep 2025 10:28:23 -0400
+
+adwaita-icon-theme (49~rc-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+  * d/control: Remove Rules-Requires-Root, unnecessary since trixie
+  * Standards-Version: 4.7.2 (no changes required)
+  * d/changelog: Fix a typo in the previous entry
+
+ -- Simon McVittie <smcv@debian.org>  Tue, 02 Sep 2025 21:09:48 +0100
+
 adwaita-icon-theme (48.1-1) unstable; urgency=medium
 
   * Team upload
   * New upstream bugfix release
     - Make the 'move' cursor (used during drag-and-drop) an alias for
-      'default' (default arrow pointing NNE), matching the intended
+      'default' (default arrow pointing NNW), matching the intended
       behaviour of file managers like nautilus.
       Previously it was a 4-way arrow pointing N/E/S/W, originally
       intended to be used for whole-window move actions, which is

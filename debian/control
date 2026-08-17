@@ -1,22 +1,21 @@
 Source: adwaita-icon-theme
-Section: gnome
-Priority: optional
+Standards-Version: 4.7.4
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Iain Lane <laney@debian.org>,
-           Jeremy Bícha <jbicha@ubuntu.com>,
-           Amin Bandali <bandali@ubuntu.com>,
-           Laurent Bigonville <bigon@debian.org>,
-           Marco Trevisan (Treviño) <marco@ubuntu.com>
-Build-Depends: debhelper-compat (= 13)
-Build-Depends-Indep: gettext,
-                     libgtk-3-bin (>= 3.24.13),
-                     librsvg2-bin,
-                     librsvg2-common:native,
-                     meson (>= 0.64.0),
-                     pkgconf,
-                     python3:native
-Standards-Version: 4.7.0
-Rules-Requires-Root: no
+Uploaders:
+ Jeremy Bícha <jbicha@ubuntu.com>,
+ Laurent Bigonville <bigon@debian.org>,
+ Marco Trevisan (Treviño) <marco@ubuntu.com>,
+Section: gnome
+Build-Depends:
+ debhelper-compat (= 14),
+Build-Depends-Indep:
+ gettext,
+ libgtk-3-bin,
+ librsvg2-bin,
+ librsvg2-common:native,
+ meson,
+ pkgconf,
+ python3:native,
 Vcs-Browser: https://salsa.debian.org/gnome-team/adwaita-icon-theme
 Vcs-Git: https://salsa.debian.org/gnome-team/adwaita-icon-theme.git
 Homepage: https://gitlab.gnome.org/GNOME/adwaita-icon-theme
@@ -24,19 +23,16 @@ Homepage: https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 Package: adwaita-icon-theme
 Architecture: all
 Multi-Arch: foreign
-Depends: gtk-update-icon-cache,
-         hicolor-icon-theme,
-         ${icons:Depends},
-         ${misc:Depends}
-Recommends: librsvg2-common
-Suggests: adwaita-icon-theme-legacy
-Breaks: adwaita-icon-theme-full (<< 45.1),
-        gnome-themes-standard-data (<< 3.18.0-2~),
-        libmutter-12-0 (<< 44.8-3~),
-        libmutter-13-0 (<< 45.3-3~),
-Replaces: gnome-themes-standard-data (<< 3.18.0-2~), adwaita-icon-theme-full (<< 45.1)
-Provides: adwaita-icon-theme-full (= ${binary:Version}),
-          gnome-icon-theme-symbolic
+Depends:
+ gtk-update-icon-cache,
+ hicolor-icon-theme,
+Recommends:
+ librsvg2-common,
+Suggests:
+ adwaita-icon-theme-legacy,
+Provides:
+ adwaita-icon-theme-full (= ${binary:Version}),
+ gnome-icon-theme-symbolic,
 Description: default icon theme of GNOME
  This package contains the default icon theme used by the GNOME desktop.
  The icons are used in core apps like Settings, Files, and GNOME Shell.
