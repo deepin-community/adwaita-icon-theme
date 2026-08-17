@@ -1,0 +1,87 @@
+From: lichenggang <lichenggang@uniontech.com>
+Date: Mon, 17 Aug 2026 17:38:28 +0800
+Subject: Restore legacy X11 cursor name aliases
+
+Adwaita 48.1 dropped the legacy X11 cursor names that window
+managers and toolkits still request (size_all, size_ver, size_hor,
+size_bdiag, size_fdiag, openhand, closedhand, ibeam, left_ptr_watch,
+pointing_hand, forbidden, split_v, split_h, whats_this, dnd-copy,
+dnd-link and the old X11 cursor hash names). deepin's kwin for
+example requests size_all while moving a window, so the cursor no
+longer switches to the grabbing hand when dragging a window.
+Restore these names as install-time symlinks pointing to the
+corresponding Adwaita cursors.
+
+Signed-off-by: lichenggang <lichenggang@uniontech.com>
+---
+--- a/meson.build	2026-08-17 17:38:22.769269099 +0800
++++ b/meson.build	2026-08-17 17:38:22.778269246 +0800
+@@ -48,28 +48,59 @@
+     # Each one is of the form:
+     # 'css-name': ['x11-name', 'x11-name', ...],
+ 
++    # Restore the legacy X11 cursor names used by window managers and
++    # toolkits (e.g. deepin's kwin requests size_all/size_ver/size_hor,
++    # closedhand, left_ptr_watch, ...). They were shipped as real files
++    # before 48.1 and are still expected by X11 clients.
++    'alias': ['dnd-link', 'link', '3085a0e285430894940527032f8b26df',
++              '640fb0e74195791501fd1ed57b41487f', 'a2a266d0498c3104214a47bd64ab0fc8'],
+     'all-resize': ['fleur'],
++    'col-resize': ['split_h'],
++    'context-menu': ['dnd-ask'],
++    'copy': ['dnd-copy', '1081e37283d90000800003c07f3ef6bf',
++             '6407b0e94181790501fd1e167b474872', 'b66166c04f8c3109214a4fbd64a50fc8'],
+     'crosshair': ['cross', 'cross_reverse', 'diamond_cross', 'tcross'],
+ 
+     # move and dnd-move are separate contexts
+     # https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/286
+-    'default': ['arrow', 'dnd-move', 'left_ptr', 'top_left_arrow', 'move'],
++    'default': ['arrow', 'dnd-move', 'left_ptr', 'top_left_arrow', 'move',
++                'dnd-none', 'right_ptr'],
+ 
+     'e-resize': ['right_side'],
+-    'ew-resize': ['sb_h_double_arrow'],
+-    'grab': ['hand1'],
+-    'help': ['question_arrow'],
++    'ew-resize': ['size_hor', 'h_double_arrow', 'sb_h_double_arrow',
++                  '028006030e0e7ebffc7f7070c0600140',
++                  '14fef782d02440884392942c11205230'],
++    'grab': ['openhand', 'hand1', '9141b49c8149039304290b508d208c40'],
++    'grabbing': ['size_all', 'closedhand', '4498f0e0c1937ffe01fd06f973665830',
++                 '9081237383d90e509aa00f00170e968f',
++                 '05e88622050804100c20044008402080',
++                 'fcf21c00b30f7e3f83fe0dfd12e71cff'],
++    'help': ['whats_this', 'left_ptr_help', 'question_arrow',
++             'd9ce0ab605698f320427677b458ad60b',
++             '5c6cd98b3f3ebcb1f9c7f1c204630408'],
+     'n-resize': ['top_side'],
+     'ne-resize': ['top_right_corner'],
+-    'nesw-resize': ['fd_double_arrow'],
+-    'ns-resize': ['sb_v_double_arrow'],
++    'nesw-resize': ['size_bdiag', 'fd_double_arrow',
++                    'fcf1c3c7cd4491d801f1e1c78f100000'],
++    'not-allowed': ['forbidden', 'dnd-no-drop', '03b6e0fcb3499374a867c041f52298f0',
++                    'circle'],
++    'ns-resize': ['size_ver', 'v_double_arrow', 'sb_v_double_arrow',
++                  '00008160000006810000408080010102',
++                  '2870a09082c103050810ffdffffe0204'],
+     'nw-resize': ['top_left_corner'],
+-    'nwse-resize': ['bd_double_arrow'],
+-    'pointer': ['hand2'],
++    'nwse-resize': ['size_fdiag', 'bd_double_arrow',
++                    'c7088f0f3e6c8088236ef8e1e3e70000'],
++    'pointer': ['pointing_hand', 'hand', 'hand2',
++                'e29285e634086352946a0e7090d73106',
++                '9d800788f1b08800ae810202380a0822'],
++    'progress': ['left_ptr_watch', '08e8e1c95fe2fc01f976f1e063a24ccd',
++                 '3ecb610c1bf2410f44200f48c40d3599',
++                 '00000000000000020006000e7e9ffc3f'],
++    'row-resize': ['split_v'],
+     's-resize': ['bottom_side'],
+     'se-resize': ['bottom_right_corner'],
+     'sw-resize': ['bottom_left_corner'],
+-    'text': ['xterm'],
++    'text': ['ibeam', 'xterm'],
+     'w-resize': ['left_side'],
+     'wait': ['watch'],
+ 
