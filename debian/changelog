@@ -1,3 +1,9 @@
+adwaita-icon-theme (48.2) unstable; urgency=medium
+
+  * Release 48.2
+
+ -- zhangkun <zhangkun2@uniontech.com>  Tue, 18 Aug 2026 15:59:17 +0800
+
 adwaita-icon-theme (48.1-1deepin1) unstable; urgency=medium
 
   * Restore legacy X11 cursor name aliases
