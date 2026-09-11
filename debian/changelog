@@ -1,3 +1,9 @@
+adwaita-icon-theme (48.1-1deepin2) unstable; urgency=medium
+
+  * Rebuild with LTO enabled (dpkg vendor feature optimize/lto).
+
+ -- tunaichao <tunaichao@uniontech.com>  Fri, 11 Sep 2026 09:55:54 +0800
+
 adwaita-icon-theme (48.1-1deepin1) unstable; urgency=medium
 
   * Restore legacy X11 cursor name aliases
