@@ -1,3 +1,10 @@
+adwaita-icon-theme (48.1-1deepin3) unstable; urgency=medium
+
+  * fix: point size_all and the legacy sizeall/fleur X11 hash names at
+    all-resize instead of the closed hand (Bug-375317)
+
+ -- zhangkun <zhangkun2@uniontech.com>  Sun, 20 Sep 2026 13:29:46 +0800
+
 adwaita-icon-theme (48.1-1deepin2) unstable; urgency=medium
 
   * Rebuild with LTO enabled (dpkg vendor feature optimize/lto).
